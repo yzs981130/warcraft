@@ -18,6 +18,7 @@ int wea_cost[5];
 int hour, minute;
 int total_minute;
 int M, N, arrow_attack, loyal_reduce;
+#pragma warning( disable : 4996)
 
 void print_time()
 {
@@ -397,13 +398,14 @@ public:
 
 int main()
 {
+    //freopen("sample.txt", "w", stdout);
     int t;
     cin >> t;
     for (int i = 0; i < t; i++)
     {
         hour = 0; 
         minute = 0;
-        cout << "Case " << i + 1 << ' ' << endl;
+        cout << "Case " << i + 1 << ':' << endl;
         cin >> M >> N >> arrow_attack >> loyal_reduce >> total_minute;
         hd headquarter[2] = {hd(M, 0), hd(M, 1)};
         vector<city> citys;
