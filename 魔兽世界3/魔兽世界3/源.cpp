@@ -216,18 +216,18 @@ public:
         if (mon_in_city[0] && mon_in_city[1])
         {
             bool check = false;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 2; ++i)
                 if (mon_in_city[i]->weapon_(bomb))
                 {
-                    if (flag == -1)
+                    if (flag == -1) 
                         check = mon_in_city[i]->bomb(mon_in_city[1 - i], pos);
-                    else
-                        check = mon_in_city[i]->bomb(mon_in_city[i - 1], flag + 1);
+                    else 
+                        check = mon_in_city[i]->bomb(mon_in_city[1 - i], flag + 1);
                     if (check)
                     {
-                        delete mon_in_city[0];
+                        delete mon_in_city[0]; 
                         mon_in_city[0] = nullptr;
-                        delete mon_in_city[1];
+                        delete mon_in_city[1]; 
                         mon_in_city[1] = nullptr;
                         break;
                     }
@@ -387,10 +387,10 @@ public:
     {
         if (warrior)
             delete warrior;
-        if (enemys[0])
+        /*if (enemys[0])
             delete enemys[0];
         if (enemys[1])
-            delete enemys[1];
+            delete enemys[1];*/
     }
 };
 
@@ -403,7 +403,7 @@ int main()
     {
         hour = 0; 
         minute = 0;
-        cout << "Case " << t + 1 << ' ' << endl;
+        cout << "Case " << i + 1 << ' ' << endl;
         cin >> M >> N >> arrow_attack >> loyal_reduce >> total_minute;
         hd headquarter[2] = {hd(M, 0), hd(M, 1)};
         vector<city> citys;
@@ -731,6 +731,11 @@ void mon::Fight(mon *p)
     if (name == dragon && life > 0 && morale > 0.8)
     {
         print_time();
+        cout << hd_belong_to->colour(true) << ' ' << mon_name[name] << ' ' << num << " yelled in city " << city_belong_to->cal_pos() << endl;
+    }
+    if (winner)
+    {
+        print_time();
         cout << (winner->hd_belong_to)->colour(true) << ' ' << mon_name[winner->name] << ' ' << winner->num << " earned " << city_belong_to->cal_life() << " elements for his headquarter" << endl;
         (winner->city_belong_to)->flag_reset((winner->hd_belong_to)->cal_color());
     }
@@ -767,7 +772,7 @@ void mon::minute_10(bool if_arrive)
 void mon::minute_30(int add_life)
 {
     print_time();
-    cout << hd_belong_to->colour(true) << ' ' << num << " earned " << add_life << " elements for his headquarter" << endl;
+    cout << hd_belong_to->colour(true) << ' ' << mon_name[name] << ' ' << num << " earned " << add_life << " elements for his headquarter" << endl;
     hd_belong_to->minute_30(add_life);
 }
 void city::move(hd *p, int i)
