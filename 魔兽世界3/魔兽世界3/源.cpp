@@ -660,7 +660,7 @@ void mon::Fight(mon *p)
         if (weapon[sword])
             sw = weapon[sword]->sw_atk();
         print_time();
-        cout << hd_belong_to->colour(true) << ' ' << mon_name[name] << ' ' << num << " attacked " << (p->hd_belong_to)->colour(true) << ' ' << mon_name[p->name] << ' ' << p->num << " in city " << hd_belong_to->cal_pos() << " with " << life << " elements and force " << att_power << endl;
+        cout << hd_belong_to->colour(true) << ' ' << mon_name[name] << ' ' << num << " attacked " << (p->hd_belong_to)->colour(true) << ' ' << mon_name[p->name] << ' ' << p->num << " in city " << city_belong_to->cal_pos() << " with " << life << " elements and force " << att_power << endl;
         p->life = p->life - att_power - sw;
         if (sw && !weapon[sword]->sword_dull())
         {
